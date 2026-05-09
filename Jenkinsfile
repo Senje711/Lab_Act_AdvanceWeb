@@ -20,7 +20,7 @@ pipeline {
                 // Maven:  sh 'mvn clean package -DskipTests'
                 // Gradle: sh './gradlew build'
                 // npm:    sh 'npm install && npm run build'
-                sh 'echo Build step — replace with your command'
+                bat 'echo Build step — replace with your command'
             }
         }
 
@@ -29,7 +29,7 @@ pipeline {
                 echo 'Running tests...'
                 // Maven:  sh 'mvn test'
                 // npm:    sh 'npm test'
-                sh 'echo Test step — replace with your command'
+                bat 'echo Test step — replace with your command'
             }
             post {
                 always {
