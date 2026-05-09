@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         APP_NAME = 'your-app-name'
-        BUILD_DIR = 'target'   // or 'build', 'dist' for your project
+        BUILD_DIR = 'target'
     }
 
     stages {
@@ -17,9 +17,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                // Maven:  sh 'mvn clean package -DskipTests'
-                // Gradle: sh './gradlew build'
-                // npm:    sh 'npm install && npm run build'
                 bat 'echo Build step — replace with your command'
             }
         }
@@ -27,35 +24,30 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Maven:  sh 'mvn test'
-                // npm:    sh 'npm test'
                 bat 'echo Test step — replace with your command'
             }
         }
+
         stage('Deploy') {
             steps {
                 echo 'Simulating deployment...'
                 bat 'echo Application deployed to local server!'
             }
         }
-    }
-           post {
-        always {
-            echo 'Pipeline completed successfully!'
-            // junit '**/target/surefire-reports/*.xml'
-        }
-    }
-}
 
         stage('Archive') {
             steps {
                 echo 'Archiving build artifacts...'
+                // Using allowEmptyArchive: true so it doesn't fail if the folder is empty
                 archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
             }
         }
     }
 
     post {
+        always {
+            echo 'Pipeline execution finished.'
+        }
         success {
             echo 'Pipeline completed successfully!'
         }
