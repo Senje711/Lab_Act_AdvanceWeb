@@ -31,12 +31,13 @@ pipeline {
                 // npm:    sh 'npm test'
                 bat 'echo Test step — replace with your command'
             }
-            post {
-                always {
-                 //   junit '**/target/surefire-reports/*.xml'
-                }
-            }
+           post {
+        always {
+            echo 'Pipeline completed successfully!'
+            // junit '**/target/surefire-reports/*.xml'
         }
+    }
+}
 
         stage('Archive') {
             steps {
