@@ -31,6 +31,14 @@ pipeline {
                 // npm:    sh 'npm test'
                 bat 'echo Test step — replace with your command'
             }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Simulating deployment...'
+                bat 'echo Application deployed to local server!'
+            }
+        }
+    }
            post {
         always {
             echo 'Pipeline completed successfully!'
